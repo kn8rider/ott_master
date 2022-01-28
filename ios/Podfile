@@ -12,6 +12,8 @@ target 'ottapp' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
   target 'ottappTests' do
     inherit! :complete
     # Pods for testing

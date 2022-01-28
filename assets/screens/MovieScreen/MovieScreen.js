@@ -8,11 +8,12 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+import {lockToLandscape} from 'react-native-orientation';
 import {Card, Avatar, List, Appbar} from 'react-native-paper';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Video from 'react-native-video';
-
+import Orientation from 'react-native-orientation';
 const offer = [
   {
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsvMnPhxiHD42Q7XTcM3H-HPtN7_9cVZwFDQ&usqp=CAU',
@@ -72,6 +73,7 @@ export class MovieScreen extends Component {
             style={{flex: 1, backgroundColor: 'black'}}
             onError={this.videoError}
             controls={true}
+            // fullscreen={Orientation.lockToLandscape()}
           />
         </View>
         <View

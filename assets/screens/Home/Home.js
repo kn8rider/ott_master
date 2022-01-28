@@ -12,7 +12,7 @@ import {Card, Avatar, List} from 'react-native-paper';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Carousal from './Carousal/Carousal';
-
+import Orientation from 'react-native-orientation';
 const offer = [
   {
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsvMnPhxiHD42Q7XTcM3H-HPtN7_9cVZwFDQ&usqp=CAU',
@@ -64,6 +64,10 @@ class Home extends Component {
     this.state = {
       expanded: false,
     };
+  }
+  componentDidMount() {
+    // Orientation.lockToLandscape();
+    // Orientation.lockToPortrait();
   }
   render() {
     return (

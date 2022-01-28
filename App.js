@@ -10,7 +10,9 @@ import Search from './assets/screens/Search/Search';
 import Favourites from './assets/screens/Favourites/Favourites';
 import Profile from './assets/screens/Profile/Profile';
 import MovieScreen from './assets/screens/MovieScreen/MovieScreen';
-
+import Continue from './assets/screens/Subscription/Continue';
+import Signup from './assets/screens/Subscription/Signup';
+import SignIn from './assets/screens/Subscription/SignIn';
 const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
@@ -55,7 +57,7 @@ function HomeScreen() {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="Favourites" component={Favourites} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile" component={Continue} />
     </Tab.Navigator>
   );
 }
@@ -78,6 +80,16 @@ const App = () => {
           <Stack.Screen
             name="MovieScreen"
             component={MovieScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Signup"
+            component={Signup}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

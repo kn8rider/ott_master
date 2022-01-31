@@ -13,6 +13,9 @@ import MovieScreen from './assets/screens/MovieScreen/MovieScreen';
 import Continue from './assets/screens/Subscription/Continue';
 import Signup from './assets/screens/Subscription/Signup';
 import SignIn from './assets/screens/Subscription/SignIn';
+import Plans from './assets/screens/Subscription/Plans';
+import SelectPlans from './assets/screens/Subscription/SelectPlans';
+import Main from './assets/screens/MainScreen/Main';
 const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
@@ -24,7 +27,7 @@ function HomeScreen() {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           switch (route.name) {
-            case 'Home': {
+            case 'Main': {
               iconName = focused ? 'movie-open' : 'movie-open-outline';
               break;
             }
@@ -49,12 +52,12 @@ function HomeScreen() {
           // You can return any component that you like here!
           return <Icon name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#d00000',
+        tabBarActiveTintColor: '#1781E7',
         tabBarInactiveTintColor: 'gray',
         tabBarActiveBackgroundColor: '#111111',
         tabBarInactiveBackgroundColor: '#111111',
       })}>
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Main" component={Main} />
       <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="Favourites" component={Favourites} />
       <Tab.Screen name="Profile" component={Continue} />
@@ -90,6 +93,21 @@ const App = () => {
           <Stack.Screen
             name="SignIn"
             component={SignIn}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Plans"
+            component={Plans}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SelectPlans"
+            component={SelectPlans}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={Profile}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

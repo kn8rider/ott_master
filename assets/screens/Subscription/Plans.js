@@ -2,10 +2,9 @@ import {Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import React, {Component} from 'react';
 import {Card, Avatar, List, Appbar} from 'react-native-paper';
 import {moderateScale} from 'react-native-size-matters';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default class Continue extends Component {
+export default class Plans extends Component {
   render() {
     return (
       <SafeAreaView
@@ -56,26 +55,13 @@ export default class Continue extends Component {
         </View>
         <View
           style={{
-            flexDirection: 'row',
             marginTop: '40%',
-            alignItems: 'baseline',
+            marginLeft: 20,
           }}>
-          <FontAwesome
-            name="laptop"
+          <MaterialCommunityIcons
+            name="check-circle-outline"
             color={'#1781E7'}
-            size={60}
-            style={{marginRight: 20, marginLeft: 20}}
-          />
-          <FontAwesome
-            name="tv"
-            color={'#1781E7'}
-            size={80}
-            style={{marginRight: 10}}
-          />
-          <SimpleLineIcons
-            name="screen-smartphone"
-            color={'#1781E7'}
-            size={80}
+            size={50}
           />
         </View>
         <Text
@@ -83,32 +69,75 @@ export default class Continue extends Component {
             color: 'white',
             fontSize: moderateScale(14),
             fontWeight: '400',
-            marginTop: 30,
-            marginLeft: 20,
-          }}>
-          STEP 1 OF 3
-        </Text>
-        <Text
-          style={{
-            color: 'white',
-            fontSize: moderateScale(19),
-            fontWeight: '600',
-            marginTop: 5,
-            marginLeft: 20,
-          }}>
-          Set up your account
-        </Text>
-        <Text
-          style={{
-            color: 'white',
-            fontSize: moderateScale(15),
-            fontWeight: '400',
             marginTop: 20,
             marginLeft: 20,
           }}>
-          AV ShowTime is personalized for you. Use your email and create a
-          password to watch AV ShowTime om any device at any time.
+          STEP 2 OF 3
         </Text>
+        <Text
+          style={{
+            color: 'white',
+            fontSize: moderateScale(20),
+            fontWeight: '500',
+            marginTop: 5,
+            marginLeft: 20,
+          }}>
+          Choose your plan
+        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginLeft: 20,
+            marginTop: 10,
+            marginRight: 20,
+          }}>
+          <MaterialCommunityIcons name="check" color={'#1781E7'} size={25} />
+          <Text
+            style={{
+              color: 'white',
+              fontSize: moderateScale(16),
+              fontWeight: '400',
+              marginLeft: 20,
+            }}>
+            No commitments, cancel anytime.
+          </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginLeft: 20,
+            marginTop: 10,
+            marginRight: 20,
+          }}>
+          <MaterialCommunityIcons name="check" color={'#1781E7'} size={25} />
+          <Text
+            style={{
+              color: 'white',
+              fontSize: moderateScale(16),
+              fontWeight: '400',
+              marginLeft: 20,
+            }}>
+            Everything on AV ShowTime for one low price.
+          </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginLeft: 20,
+            marginTop: 10,
+            marginRight: 20,
+          }}>
+          <MaterialCommunityIcons name="check" color={'#1781E7'} size={25} />
+          <Text
+            style={{
+              color: 'white',
+              fontSize: moderateScale(16),
+              fontWeight: '400',
+              marginLeft: 20,
+            }}>
+            No ads and no extra fees. Ever.
+          </Text>
+        </View>
         <TouchableOpacity
           style={{
             width: '90%',
@@ -120,14 +149,14 @@ export default class Continue extends Component {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          onPress={() => this.props.navigation.navigate('Signup')}>
+          onPress={() => this.props.navigation.navigate('SelectPlans')}>
           <Text
             style={{
               color: 'white',
-              fontSize: moderateScale(19),
-              fontWeight: '500',
+              fontSize: moderateScale(17),
+              fontWeight: '400',
             }}>
-            CONTINUE
+            SEE THE PLANS
           </Text>
         </TouchableOpacity>
       </SafeAreaView>

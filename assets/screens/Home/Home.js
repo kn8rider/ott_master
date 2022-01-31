@@ -151,7 +151,10 @@ class Home extends Component {
               data={offer}
               renderItem={({item, index, separators}) => (
                 <Card
-                  onPress={() => this.props.navigation.navigate('MovieScreen')}
+                  onPress={() => {
+                    this.props.navigation.navigate('MovieScreen'),
+                      console.log(index);
+                  }}
                   style={{
                     marginHorizontal: 10,
                     borderRadius: 10,

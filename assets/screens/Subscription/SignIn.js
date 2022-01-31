@@ -24,7 +24,7 @@ export default class SignIn extends Component {
         }}>
         <Appbar style={{backgroundColor: 'black'}}>
           <Appbar.BackAction onPress={() => this.props.navigation.goBack()} />
-          <Appbar.Content title="AV ShowTime" titleStyle={{color: 'red'}} />
+          <Appbar.Content title="AV ShowTime" titleStyle={{color: '#1781E7'}} />
         </Appbar>
         <View style={{height: this.state.isActive ? '20%' : 1}}></View>
         <View style={{marginTop: 10, marginHorizontal: '5%'}}>
@@ -64,7 +64,7 @@ export default class SignIn extends Component {
             borderWidth: 1,
             alignSelf: 'center',
             marginTop: 30,
-            borderRadius: 2,
+            borderRadius: 3,
             justifyContent: 'center',
             alignItems: 'center',
           }}

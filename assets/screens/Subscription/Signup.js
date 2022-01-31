@@ -30,7 +30,7 @@ export default class Signup extends Component {
           }}>
           <Text
             style={{
-              color: 'red',
+              color: '#1781E7',
               fontSize: moderateScale(23),
               fontWeight: '600',
             }}>
@@ -149,14 +149,14 @@ export default class Signup extends Component {
           style={{
             width: '90%',
             height: 40,
-            backgroundColor: 'red',
+            backgroundColor: '#1781E7',
             alignSelf: 'center',
             marginTop: 20,
-            borderRadius: 2,
+            borderRadius: 3,
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          onPress={() => this.props.navigation.navigate('Home')}>
+          onPress={() => this.props.navigation.navigate('Plans')}>
           <Text
             style={{
               color: 'white',

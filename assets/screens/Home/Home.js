@@ -7,12 +7,12 @@ import {
   ScrollView,
   FlatList,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {Card, Avatar, List} from 'react-native-paper';
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Carousal from './Carousal/Carousal';
-import Orientation from 'react-native-orientation';
 const offer = [
   {
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsvMnPhxiHD42Q7XTcM3H-HPtN7_9cVZwFDQ&usqp=CAU',
@@ -56,6 +56,54 @@ const offer = [
     id: '06',
     genre: 'Comedy',
   },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsvMnPhxiHD42Q7XTcM3H-HPtN7_9cVZwFDQ&usqp=CAU',
+    status: 'In review',
+    id: '01',
+    genre: 'Action',
+  },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxEze2m-ndA6l0ineIS9WRTt3NJVLsPccasA&usqp=CAU',
+    status: 'Active',
+    id: '02',
+    genre: 'Romance',
+  },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5H4kG05ZRQ9ZevjoRMZr-YnJwoxd9WMQs3g&usqp=CAU',
+    status: 'Pending',
+    id: '03',
+    genre: 'Horror',
+  },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxEze2m-ndA6l0ineIS9WRTt3NJVLsPccasA&usqp=CAU',
+    status: 'Ongoing',
+    id: '06',
+    genre: 'Thriller',
+  },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxEze2m-ndA6l0ineIS9WRTt3NJVLsPccasA&usqp=CAU',
+    status: 'Ongoing',
+    id: '06',
+    genre: 'Drama',
+  },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxEze2m-ndA6l0ineIS9WRTt3NJVLsPccasA&usqp=CAU',
+    status: 'Ongoing',
+    id: '06',
+    genre: 'Animation',
+  },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxEze2m-ndA6l0ineIS9WRTt3NJVLsPccasA&usqp=CAU',
+    status: 'Ongoing',
+    id: '06',
+    genre: 'Comedy',
+  },
+  {
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsvMnPhxiHD42Q7XTcM3H-HPtN7_9cVZwFDQ&usqp=CAU',
+    status: 'In review',
+    id: '01',
+    genre: 'Action',
+  },
 ];
 
 class Home extends Component {
@@ -66,7 +114,6 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    // Orientation.lockToLandscape();
     // Orientation.lockToPortrait();
   }
   render() {
@@ -94,33 +141,48 @@ class Home extends Component {
               }}>
               Genres
             </Text>
+
             <FlatList
               showsHorizontalScrollIndicator={false}
               horizontal
               data={offer}
               renderItem={({item, index, separators}) => (
-                <View style={{alignItems: 'center'}}>
-                  <Image
-                    source={{uri: item.img}}
-                    style={{
-                      marginHorizontal: 10,
-                      marginBottom: 2,
-                      marginTop: 10,
-                      width: 60,
-                      height: 60,
-                      borderRadius: 50,
-                      borderWidth: 1,
-                      borderColor: '#d00000',
-                    }}
-                  />
+                <TouchableOpacity style={{alignItems: 'center'}}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate('ListScreen', {
+                        data: offer,
+                        header: item.genre,
+                      })
+                    }>
+                    <Image
+                      source={{uri: item.img}}
+                      style={{
+                        marginHorizontal: 10,
+                        marginBottom: 2,
+                        marginTop: 10,
+                        width: 60,
+                        height: 60,
+                        borderRadius: 50,
+                        borderWidth: 1,
+                        borderColor: '#d00000',
+                      }}
+                    />
+                  </TouchableOpacity>
                   <Text
                     style={{
                       fontSize: moderateScale(12),
                       color: 'white',
-                    }}>
+                    }}
+                    onPress={() =>
+                      this.props.navigation.navigate('ListScreen', {
+                        data: offer,
+                        header: item.genre,
+                      })
+                    }>
                     {item.genre}
                   </Text>
-                </View>
+                </TouchableOpacity>
               )}
               keyExtractor={(item, ind) => ind}
             />
@@ -134,17 +196,40 @@ class Home extends Component {
             }}>
             Suggested Movies
           </Text>
-          <View style={{marginVertical: 5}}>
-            <Text
+          <View>
+            <View
               style={{
-                marginStart: '2%',
-                marginVertical: 10,
-                fontSize: moderateScale(17),
-                fontWeight: '400',
-                color: 'white',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignContent: 'center',
+                marginHorizontal: 10,
               }}>
-              Action
-            </Text>
+              <Text
+                style={{
+                  marginVertical: 10,
+                  fontSize: moderateScale(17),
+                  fontWeight: '400',
+                  color: 'white',
+                }}>
+                Action
+              </Text>
+              <Text
+                style={{
+                  marginStart: '2%',
+                  marginVertical: 10,
+                  fontSize: moderateScale(14),
+                  fontWeight: '400',
+                  color: '#1781E7',
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate('ListScreen', {
+                    data: offer,
+                    header: 'Action Movies',
+                  })
+                }>
+                SEE MORE
+              </Text>
+            </View>
             <FlatList
               showsHorizontalScrollIndicator={false}
               horizontal
@@ -152,8 +237,7 @@ class Home extends Component {
               renderItem={({item, index, separators}) => (
                 <Card
                   onPress={() => {
-                    this.props.navigation.navigate('MovieScreen'),
-                      console.log(index);
+                    this.props.navigation.navigate('MovieScreen');
                   }}
                   style={{
                     marginHorizontal: 10,
@@ -187,16 +271,39 @@ class Home extends Component {
             />
           </View>
           <View style={{marginVertical: 5}}>
-            <Text
+            <View
               style={{
-                marginStart: '2%',
-                marginVertical: 10,
-                fontSize: moderateScale(17),
-                fontWeight: '400',
-                color: 'white',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignContent: 'center',
+                marginHorizontal: 10,
               }}>
-              Drama
-            </Text>
+              <Text
+                style={{
+                  marginVertical: 10,
+                  fontSize: moderateScale(17),
+                  fontWeight: '400',
+                  color: 'white',
+                }}>
+                Drama
+              </Text>
+              <Text
+                style={{
+                  marginStart: '2%',
+                  marginVertical: 10,
+                  fontSize: moderateScale(14),
+                  fontWeight: '400',
+                  color: '#1781E7',
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate('ListScreen', {
+                    data: offer,
+                    header: 'Drama',
+                  })
+                }>
+                SEE MORE
+              </Text>
+            </View>
             <FlatList
               showsHorizontalScrollIndicator={false}
               horizontal
@@ -235,16 +342,39 @@ class Home extends Component {
             />
           </View>
           <View style={{marginVertical: 5}}>
-            <Text
+            <View
               style={{
-                marginStart: '2%',
-                marginVertical: 10,
-                fontSize: moderateScale(17),
-                fontWeight: '400',
-                color: 'white',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignContent: 'center',
+                marginHorizontal: 10,
               }}>
-              Romance
-            </Text>
+              <Text
+                style={{
+                  marginVertical: 10,
+                  fontSize: moderateScale(17),
+                  fontWeight: '400',
+                  color: 'white',
+                }}>
+                Romance
+              </Text>
+              <Text
+                style={{
+                  marginStart: '2%',
+                  marginVertical: 10,
+                  fontSize: moderateScale(14),
+                  fontWeight: '400',
+                  color: '#1781E7',
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate('ListScreen', {
+                    data: offer,
+                    header: 'Romance',
+                  })
+                }>
+                SEE MORE
+              </Text>
+            </View>
             <FlatList
               showsHorizontalScrollIndicator={false}
               horizontal

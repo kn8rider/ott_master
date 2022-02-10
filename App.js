@@ -16,12 +16,13 @@ import SignIn from './assets/screens/Subscription/SignIn';
 import Plans from './assets/screens/Subscription/Plans';
 import SelectPlans from './assets/screens/Subscription/SelectPlans';
 import Main from './assets/screens/MainScreen/Main';
+import ListScreen from './assets/screens/ListScreen/ListScreen';
 const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Main"
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarIcon: ({focused, color, size}) => {
@@ -60,7 +61,7 @@ function HomeScreen() {
       <Tab.Screen name="Main" component={Main} />
       <Tab.Screen name="Search" component={Search} />
       <Tab.Screen name="Favourites" component={Favourites} />
-      <Tab.Screen name="Profile" component={Continue} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 }
@@ -74,15 +75,20 @@ const App = () => {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Homescreen">
+        <Stack.Navigator initialRouteName="Continue">
           <Stack.Screen
-            name="Homescreen"
+            name="Home"
             component={HomeScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
             name="MovieScreen"
             component={MovieScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Continue"
+            component={Continue}
             options={{headerShown: false}}
           />
           <Stack.Screen
@@ -108,6 +114,11 @@ const App = () => {
           <Stack.Screen
             name="Profile"
             component={Profile}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ListScreen"
+            component={ListScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

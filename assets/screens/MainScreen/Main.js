@@ -5,7 +5,7 @@ import Home from '../Home/Home';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {moderateScale} from 'react-native-size-matters';
 import Profile from '../Profile/Profile';
-
+import Favourites from '../Favourites/Favourites';
 const Tab = createMaterialTopTabNavigator();
 
 export default class Main extends Component {
@@ -24,7 +24,7 @@ export default class Main extends Component {
           tabBarStyle: {backgroundColor: 'black'},
         }}>
         <Tab.Screen name="HOME" component={Home} />
-        <Tab.Screen name="TV" component={Profile} />
+        <Tab.Screen name="TV" component={Favourites} />
         <Tab.Screen name="WEB SHOWS" component={Home} />
         <Tab.Screen name="MOVIES" component={Home} />
         <Tab.Screen name="NEWS" component={Home} />

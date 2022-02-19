@@ -377,7 +377,7 @@ export default class DashBoard extends Component {
                     justifyContent: 'center',
                     alignItems: 'center',
                     borderRadius: 10,
-                    width: '40%',
+                    width: '45%',
                     elevation: 10,
                   }}
                   onPress={() => {
@@ -403,7 +403,7 @@ export default class DashBoard extends Component {
                     justifyContent: 'center',
                     alignItems: 'center',
                     borderRadius: 10,
-                    width: '40%',
+                    width: '45%',
                     elevation: 10,
                   }}
                   onPress={() => {

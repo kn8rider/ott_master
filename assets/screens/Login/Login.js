@@ -1,37 +1,32 @@
 import React, {Component} from 'react';
-import {Text, View, Image, Dimensions, TouchableOpacity} from 'react-native';
-import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
+import {
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import SnapCarousal from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 const width = Dimensions.get('window').width;
 const offer = [
   {
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsvMnPhxiHD42Q7XTcM3H-HPtN7_9cVZwFDQ&usqp=CAU',
-    status: 'In review',
+    img: 'https://media.istockphoto.com/photos/pediatrician-talks-with-patients-mother-picture-id1293681788?b=1&k=20&m=1293681788&s=170667a&w=0&h=86FIfZB_E9W0-1olORv2I6P5Fvd6EUMZUVPyiMfVrAY=',
     id: '01',
-    genre: 'Action',
-    category: 'Bollywood',
   },
   {
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxEze2m-ndA6l0ineIS9WRTt3NJVLsPccasA&usqp=CAU',
-    status: 'Active',
+    img: 'https://media.istockphoto.com/photos/happy-doctor-and-senior-patient-use-tablet-at-consultation-picture-id1294678917?b=1&k=20&m=1294678917&s=170667a&w=0&h=QM9PVw4Q4gVmcOqHQ2W53RTDdZoklbtaqxsLpMYWJZI=',
     id: '02',
-    genre: 'Romance',
-    category: 'Hollywood',
   },
   {
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5H4kG05ZRQ9ZevjoRMZr-YnJwoxd9WMQs3g&usqp=CAU',
-    status: 'Pending',
+    img: 'https://media.istockphoto.com/photos/experienced-middle-aged-family-doctor-showing-analysis-results-on-picture-id1315185719?b=1&k=20&m=1315185719&s=170667a&w=0&h=sBD8o7tF9gdoyPqbJBkuVTb_keofWtvbE161hQoP2Yk=',
     id: '03',
-    genre: 'Horror',
-    category: 'Telugu',
   },
   {
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxEze2m-ndA6l0ineIS9WRTt3NJVLsPccasA&usqp=CAU',
-    status: 'Ongoing',
+    img: 'https://media.istockphoto.com/photos/have-a-look-at-your-bloodwork-results-picture-id1293814791?b=1&k=20&m=1293814791&s=170667a&w=0&h=dmgTyHyOOuYE2NnjGFtyE-Ynx7OPGjOpG1xPwcZgots=',
     id: '06',
-    genre: 'Thriller',
-    category: 'Tamil',
   },
 ];
 export default class Login extends Component {
@@ -42,7 +37,12 @@ export default class Login extends Component {
       activeBtn: 1,
     };
   }
-
+  componentDidMount() {
+    StatusBar.setHidden(true);
+  }
+  componentWillUnmount() {
+    StatusBar.setHidden(false);
+  }
   render() {
     return (
       <View
@@ -56,8 +56,9 @@ export default class Login extends Component {
             <Image
               source={{uri: item.img}}
               style={{
-                width: '100%',
-                height: '60%',
+                flex: 1,
+                // width: '100%',
+                // height: '70%',
                 borderBottomLeftRadius: 50,
               }}
               resizeMode="cover"
@@ -78,7 +79,7 @@ export default class Login extends Component {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-            marginTop: -200,
+            marginTop: 20,
           }}>
           {offer.map((item, ind) =>
             this.state.activeSlide === ind ? (

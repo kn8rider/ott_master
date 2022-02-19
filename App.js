@@ -5,18 +5,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import SplashScreen from 'react-native-splash-screen';
-import Home from './assets/screens/Home/Home';
 import Search from './assets/screens/Search/Search';
-import Favourites from './assets/screens/Favourites/Favourites';
 import Profile from './assets/screens/Profile/Profile';
-import MovieScreen from './assets/screens/MovieScreen/MovieScreen';
-import Continue from './assets/screens/Subscription/Continue';
-import Signup from './assets/screens/Subscription/Signup';
-import SignIn from './assets/screens/Subscription/SignIn';
-import Plans from './assets/screens/Subscription/Plans';
-import SelectPlans from './assets/screens/Subscription/SelectPlans';
-import Main from './assets/screens/MainScreen/Main';
-import ListScreen from './assets/screens/ListScreen/ListScreen';
+import Login from './assets/screens/Login/Login';
+import DashBoard from './assets/screens/DashBoard/DashBoard';
 const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
@@ -24,20 +16,30 @@ function HomeScreen() {
     <Tab.Navigator
       initialRouteName="Main"
       screenOptions={({route}) => ({
-        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          height: 70,
+          elevation: 10,
+        },
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           switch (route.name) {
             case 'Main': {
-              iconName = focused ? 'movie-open' : 'movie-open-outline';
-              break;
-            }
-            case 'Search': {
               iconName = focused ? 'magnify' : 'magnify';
               break;
             }
+            case 'Search': {
+              iconName = focused
+                ? 'chat-processing'
+                : 'chat-processing-outline';
+              break;
+            }
             case 'Favourites': {
-              iconName = focused ? 'heart' : 'heart-outline';
+              iconName = focused ? 'notebook' : 'notebook-outline';
+              break;
+            }
+            case 'Add': {
+              iconName = focused ? 'briefcase-plus' : 'briefcase-plus-outline';
               break;
             }
             case 'Profile': {
@@ -51,17 +53,49 @@ function HomeScreen() {
           }
 
           // You can return any component that you like here!
-          return <Icon name={iconName} size={size} color={color} />;
+          return (
+            <Icon
+              name={iconName}
+              size={35}
+              color={color}
+              style={{
+                backgroundColor: focused ? '#BBDABB' : 'white',
+                padding: 5,
+                borderRadius: 15,
+              }}
+            />
+          );
         },
-        tabBarActiveTintColor: '#1781E7',
+        tabBarActiveTintColor: '#20A9BA',
         tabBarInactiveTintColor: 'gray',
-        tabBarActiveBackgroundColor: '#111111',
-        tabBarInactiveBackgroundColor: '#111111',
+        tabBarActiveBackgroundColor: 'white',
+        tabBarInactiveBackgroundColor: 'white',
       })}>
-      <Tab.Screen name="Main" component={Main} />
-      <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Favourites" component={Favourites} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Main"
+        component={DashBoard}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Favourites"
+        component={Search}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Add"
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 }
@@ -77,48 +111,13 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Continue">
           <Stack.Screen
-            name="Home"
+            name="DashBoard"
             component={HomeScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="MovieScreen"
-            component={MovieScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
             name="Continue"
-            component={Continue}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Signup"
-            component={Signup}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SignIn"
-            component={SignIn}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Plans"
-            component={Plans}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SelectPlans"
-            component={SelectPlans}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Profile"
-            component={Profile}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="ListScreen"
-            component={ListScreen}
+            component={Login}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
